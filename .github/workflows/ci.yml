@@ -1,0 +1,18 @@
+name: Build and test binary
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup docker env
+      run: docker-compose build
+    - name: Build binaries
+      run: docker-compose run compile
+    - name: Ensure binary runs
+      run: ./mruby/build/x86_64-pc-linux-gnu/bin/mruby-cli --help | grep "mruby-cli -h, --help"
