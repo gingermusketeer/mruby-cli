@@ -16,7 +16,7 @@ jobs:
       run: docker-compose run compile
     - name: Ensure binary runs
       run: ./mruby/build/x86_64-pc-linux-gnu/bin/mruby-cli --help | grep "mruby-cli -h, --help"
-    - name: Unit tests
-      run: docker-compose run mtest
+    # - name: Unit tests
+    #   run: docker-compose run mtest
     - name: Integration tests
       run: docker-compose run bintest
